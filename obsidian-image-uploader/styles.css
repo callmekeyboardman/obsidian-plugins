@@ -1,0 +1,14 @@
+/* 七牛云图片上传插件样式 */
+
+.plugin-setting-tab h2 {
+  margin-bottom: 20px;
+}
+
+.setting-item-control input[type="text"] {
+  width: 300px;
+}
+
+.setting-item-description {
+  color: var(--text-muted);
+  font-size: 12px;
+}

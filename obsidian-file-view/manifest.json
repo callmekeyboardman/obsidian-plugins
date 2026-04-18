@@ -1,0 +1,9 @@
+{
+  "id": "all-file-viewer",
+  "name": "All File Viewer",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Show non-native files (Excel, Word, PPT, ZIP, etc.) in the file explorer and open them with the system default app.",
+  "author": "shimengjie",
+  "isDesktopOnly": true
+}

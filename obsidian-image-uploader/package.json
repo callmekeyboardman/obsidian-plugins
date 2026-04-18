@@ -1,0 +1,23 @@
+{
+  "name": "qiniu-image-uploader",
+  "version": "1.0.0",
+  "description": "Obsidian plugin for uploading images to Qiniu cloud storage",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production"
+  },
+  "keywords": [
+    "obsidian",
+    "qiniu",
+    "image",
+    "upload"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.20.0",
+    "obsidian": "latest",
+    "typescript": "^5.0.0"
+  }
+}

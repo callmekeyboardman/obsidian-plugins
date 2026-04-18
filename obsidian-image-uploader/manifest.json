@@ -1,0 +1,10 @@
+{
+  "id": "qiniu-image-uploader",
+  "name": "Qiniu Image Uploader",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Upload images to Qiniu cloud storage when pasting or dragging into Obsidian",
+  "author": "Mengj",
+  "authorUrl": "https://github.com",
+  "isDesktopOnly": false
+}

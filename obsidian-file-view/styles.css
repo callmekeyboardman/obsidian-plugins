@@ -1,0 +1,239 @@
+/* All File Viewer — placeholder pane styles */
+.external-file-view .external-file-view__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.external-file-view .external-file-view__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  border: 1px solid var(--background-modifier-border);
+}
+
+/* The big icon inside the placeholder uses Obsidian's setIcon() which
+   injects an <svg class="svg-icon">. Make it a sensible size. */
+.external-file-view .external-file-view__icon svg.svg-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.external-file-view .external-file-view__title {
+  margin: 0.25rem 0 0;
+  font-size: 1.1rem;
+  word-break: break-all;
+}
+
+.external-file-view .external-file-view__path {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.external-file-view .external-file-view__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------------------ */
+/* File explorer icons by extension                                    */
+/* ------------------------------------------------------------------ */
+/*
+ * Obsidian renders each file row as `.nav-file-title` containing
+ * `.nav-file-title-content`. The file's extension is exposed via the
+ * `data-path` attribute on `.nav-file-title`. We use attribute selectors
+ * (with the `i` flag for case-insensitive matching, so `.XLSX` matches
+ * `.xlsx`) to add a small colored badge in front of the file name.
+ *
+ * Each badge is a colored block with a Lucide icon "punched out" via
+ * CSS mask-image (inline SVG data URI). The badge color comes from
+ * `background-color`, the icon shape from `mask-image`.
+ *
+ * We deliberately do NOT style PDFs here — Obsidian handles those natively
+ * with its own viewer/icon and we don't want to interfere.
+ */
+
+/* Shared badge box: shape, size, masking behavior. */
+.nav-file-title[data-path$=".xlsx" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".xls" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".xlsm" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".csv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ods" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".docx" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".doc" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".rtf" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".odt" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".pptx" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ppt" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".odp" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".zip" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".rar" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".7z" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".tar" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".gz" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".iso" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".exe" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".msi" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".dmg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".apk" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".app" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".epub" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mobi" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".psd" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ai" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".sketch" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".fig" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".png" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".jpg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".jpeg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".gif" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".bmp" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".svg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".webp" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".avif" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".tiff" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".tif" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ico" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mp4" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".webm" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ogv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mov" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mkv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".avi" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".flv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".m4v" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".wmv" i] .nav-file-title-content::before {
+  content: "";
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.4em;
+  border-radius: 3px;
+  vertical-align: middle;
+  /* The inner SVG is rendered as a mask, so the badge color comes from
+     `background-color`. Each per-extension rule below sets both. */
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: 70% 70%;
+          mask-size: 70% 70%;
+}
+
+/* ----- Spreadsheets: file-spreadsheet ----- */
+.nav-file-title[data-path$=".xlsx" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".xls" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".xlsm" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".csv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ods" i] .nav-file-title-content::before {
+  background-color: #1f7244;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><path d='M14 2v6h6'/><path d='M8 13h2'/><path d='M14 13h2'/><path d='M8 17h2'/><path d='M14 17h2'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><path d='M14 2v6h6'/><path d='M8 13h2'/><path d='M14 13h2'/><path d='M8 17h2'/><path d='M14 17h2'/></svg>");
+}
+
+/* ----- Word processors: file-text ----- */
+.nav-file-title[data-path$=".docx" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".doc" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".rtf" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".odt" i] .nav-file-title-content::before {
+  background-color: #1f4d8a;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><line x1='10' y1='9' x2='8' y2='9'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><line x1='16' y1='13' x2='8' y2='13'/><line x1='16' y1='17' x2='8' y2='17'/><line x1='10' y1='9' x2='8' y2='9'/></svg>");
+}
+
+/* ----- Presentations: presentation ----- */
+.nav-file-title[data-path$=".pptx" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ppt" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".odp" i] .nav-file-title-content::before {
+  background-color: #b7472a;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h20'/><path d='M21 3v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3'/><path d='m7 21 5-6 5 6'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h20'/><path d='M21 3v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3'/><path d='m7 21 5-6 5 6'/></svg>");
+}
+
+/* ----- Archives: archive ----- */
+.nav-file-title[data-path$=".zip" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".rar" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".7z" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".tar" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".gz" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".iso" i] .nav-file-title-content::before {
+  background-color: #7f6a00;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='20' height='5' x='2' y='3' rx='1'/><path d='M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8'/><path d='M10 12h4'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='20' height='5' x='2' y='3' rx='1'/><path d='M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8'/><path d='M10 12h4'/></svg>");
+}
+
+/* ----- Apps / installers: app-window ----- */
+.nav-file-title[data-path$=".exe" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".msi" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".dmg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".apk" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".app" i] .nav-file-title-content::before {
+  background-color: #555;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'/><path d='M10 4v4'/><path d='M2 8h20'/><path d='M6 4v4'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='4' width='20' height='16' rx='2'/><path d='M10 4v4'/><path d='M2 8h20'/><path d='M6 4v4'/></svg>");
+}
+
+/* ----- E-books: book-open ----- */
+.nav-file-title[data-path$=".epub" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mobi" i] .nav-file-title-content::before {
+  background-color: #6a3d9a;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/><path d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg>");
+}
+
+/* ----- Design files: palette ----- */
+.nav-file-title[data-path$=".psd" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ai" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".sketch" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".fig" i] .nav-file-title-content::before {
+  background-color: #9b59b6;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='13.5' cy='6.5' r='.5' fill='white'/><circle cx='17.5' cy='10.5' r='.5' fill='white'/><circle cx='8.5' cy='7.5' r='.5' fill='white'/><circle cx='6.5' cy='12.5' r='.5' fill='white'/><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='13.5' cy='6.5' r='.5' fill='white'/><circle cx='17.5' cy='10.5' r='.5' fill='white'/><circle cx='8.5' cy='7.5' r='.5' fill='white'/><circle cx='6.5' cy='12.5' r='.5' fill='white'/><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z'/></svg>");
+}
+
+/* ----- Images: image (Obsidian renders them natively; this is a visual cue). ----- */
+.nav-file-title[data-path$=".png" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".jpg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".jpeg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".gif" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".bmp" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".svg" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".webp" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".avif" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".tiff" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".tif" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ico" i] .nav-file-title-content::before {
+  background-color: #16a085;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>");
+}
+
+/* ----- Videos: film ----- */
+.nav-file-title[data-path$=".mp4" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".webm" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".ogv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mov" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mkv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".avi" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".flv" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".m4v" i] .nav-file-title-content::before,
+.nav-file-title[data-path$=".wmv" i] .nav-file-title-content::before {
+  background-color: #e67e22;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2'/><path d='M7 3v18'/><path d='M3 7.5h4'/><path d='M3 12h18'/><path d='M3 16.5h4'/><path d='M17 3v18'/><path d='M17 7.5h4'/><path d='M17 16.5h4'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2'/><path d='M7 3v18'/><path d='M3 7.5h4'/><path d='M3 12h18'/><path d='M3 16.5h4'/><path d='M17 3v18'/><path d='M17 7.5h4'/><path d='M17 16.5h4'/></svg>");
+}
